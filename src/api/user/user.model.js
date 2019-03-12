@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 
 
 const usuarioSchema = new Schema({
-    nome:{
+    name:{
         type: String,
         unique: true,
         required: true
@@ -21,7 +21,7 @@ const usuarioSchema = new Schema({
         required: true
 
     },
-    senha:{
+    password:{
         type: String,
         required: true,
         select: false

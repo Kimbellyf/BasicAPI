@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+mongoose = require('mongoose')
+//conexao com o mongoose , mongodb
 mongoose.connect('mongodb://localhost/basicapi', { useNewUrlParser: true })
     .catch(e => {
         const msg = 'ERRO! Não foi possível conectar com o MongoDB!'
