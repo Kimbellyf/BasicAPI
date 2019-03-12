@@ -1,0 +1,29 @@
+{
+  "name": "basicapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kimbellyf/BasicAPI.git"
+  },
+  "author": "kimbellyf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kimbellyf/BasicAPI/issues"
+  },
+  "homepage": "https://github.com/Kimbellyf/BasicAPI#readme",
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.16.4",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "axios": "0.18.0",
+    "nodemon": "1.18.0"
+  }
+}
