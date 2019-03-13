@@ -19,6 +19,8 @@
   "homepage": "https://github.com/Kimbellyf/BasicAPI#readme",
   "keywords": [],
   "dependencies": {
+    "bcrypt": "^3.0.4",
+    "bcrypt-nodejs": "0.0.3",
     "consign": "^0.1.6",
     "express": "^4.16.4",
     "mongod": "^2.0.0",

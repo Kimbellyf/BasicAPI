@@ -1,5 +1,6 @@
 //parte especifica de login
-const { authSecret } = require('/.env')
+const path = require('path');
+const { authSecret } = require('/.env');
 const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
 
