@@ -19,7 +19,10 @@
   "homepage": "https://github.com/Kimbellyf/BasicAPI#readme",
   "keywords": [],
   "dependencies": {
+    "consign": "^0.1.6",
     "express": "^4.16.4",
+    "mongod": "^2.0.0",
+    "mongoose": "^5.4.19",
     "start": "^5.1.0"
   },
   "devDependencies": {

@@ -25,7 +25,11 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         select: false
-    }
-    
+    },
+    createdAt:{
+        type: Date,
+        defaut: Date.now,
+    },
 })
+//registrando o model na aplicação
 module.exports = mongoose.model('user', UserSchema);

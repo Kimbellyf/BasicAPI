@@ -4,17 +4,18 @@ const bcrypt = require('bcrypt-nodejs')
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
 
+    //                                                                       //vai pegar a senha e vai retornar  o hash q foi gerado a partir da senha
     const encryptPassword = password => {
-        const salt = bcrypt.genSaltSync(10)
-        return bcrypt.hashSync(password, salt)
+        const salt = bcrypt.genSaltSync(10)                                //serve p ficar mudando o hash msm q tenha a msm senha,o segredo é q vem da msm origem //(10) numero de repet para gerar o salt
+        return bcrypt.hashSync(password, salt)                             //senha criptografada e usada p colocar no banco
     }
 
     const save = async (req, res) => {
-        const user = { ...req.body }
+        const user = { ...req.body }                                    //body interceptado pelo body-parser, tou espalhando o atrib e colocando em outro obj
         if(req.params.id) user.id = req.params.id
 
-        if(!req.originalUrl.startsWith('/users')) user.admin = false
-        if(!req.user || !req.user.admin) user.admin = false
+        //if(!req.originalUrl.startsWith('/users')) user.admin = false
+        //if(!req.user || !req.user.admin) user.admin = false
 
         try {
             existsOrError(user.name, 'Nome não informado')
@@ -26,24 +27,24 @@ module.exports = app => {
                 'Senhas não conferem')
 
             const userFromDB = await app.db('users')
-                .where({ email: user.email }).first()
-            if(!user.id) {
+                .where({ email: user.email }).first()                   // 1 usuario , o first
+            if(!user.id) {                                              //se o usuario estiver setado
                 notExistsOrError(userFromDB, 'Usuário já cadastrado')
             }
         } catch(msg) {
-            return res.status(400).send(msg)
+            return res.status(400).send(msg)                          //erro q o cliente n informou todas as infos
         }
-
-        user.password = encryptPassword(user.password)
-        delete user.confirmPassword
+        
+        user.password = encryptPassword(user.password)                //criptogrando a senha do usuario
+        delete user.confirmPassword                                   //n vou usar então apago
 
         if(user.id) {
             app.db('users')
                 .update(user)
-                .where({ id: user.id })
+                .where({ id: user.id })                               //filtro p inserir
                 .whereNull('deletedAt')
-                .then(_ => res.status(204).send())
-                .catch(err => res.status(500).send(err))
+                .then(_ => res.status(204).send())                     //204 q deu td certo mas q n retorna nd
+                .catch(err => res.status(500).send(err))              // 500 = erro do lado do servidor
         } else {
             app.db('users')
                 .insert(user)
