@@ -1,6 +1,6 @@
 const User = require('./user.model');
 const_ = require('lodash');
-const express = requiere ('express')
+const express = require ('express')
 
 
 // admin = require('./admin')
