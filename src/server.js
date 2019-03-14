@@ -7,7 +7,7 @@ const porta = 5000;
 //Iniciando o DB 
 mongoose.connect('mongodb://localhost:27017/nodeapi',{useNewUrlParser:true});
 
-const User = require ('/home/kimbelly/BasicAPI/src/api/user/user.model.js')
+const User = require ('./api/user/user.model')
 
 //primeira rota
 app.get('/',(req,res) =>{
@@ -21,6 +21,7 @@ app.get('/',(req,res) =>{
     })
     const getw = (req, res) => {
         app.db('users')
+        
             .select('id', 'name', 'email', 'admin')
             .whereNull('deletedAt')
             .then(users => res.json(users))
