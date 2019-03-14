@@ -1,5 +1,6 @@
 //refazer
 const bcrypt = require('bcrypt-nodejs')
+require('dotenv').config();
 
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation

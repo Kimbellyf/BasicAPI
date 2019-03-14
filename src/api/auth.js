@@ -1,8 +1,10 @@
 //parte especifica de login
 const path = require('path');
-const { authSecret } = require('/.env');
+require('dotenv').config();
+const { authSecret } = require('../.env');
 const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
+
 
 module.exports = app => {
     //                                                                                //entrar 
